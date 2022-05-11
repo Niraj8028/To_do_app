@@ -1,47 +1,52 @@
-import React from 'react'
+import React, { useState } from "react";
+import {
+  FormGroup,
+  Input,
+  InputGroup,
+  
+  Button,
+  Form,
+  Container
+} from "reactstrap";
+import { v4 } from "uuid";
 
-import { Form, FormGroup, Input, Button, InputGroup,InputGroupText} from "reactstrap"
+const TodoForm = ({ addTodos }) => {
+  const [todoString, setTodoString] = useState("");
 
-import {v4} from "uuid";
-
-const Todoform=({addTodos})=> {
-    const[todostring,setTodostring]=useState("");
-    
-
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-        if(todostring===""){
-            return alert("please enter todo")
-        }
-        const todo={
-            todostring,
-            id: v4()
-        }
-        addTodos(todo);
-        setTodostring("");
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (todoString === "") {
+      return alert("Please fill some value");
     }
-    return (
-        <div>
-            <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                    <InputGroup>
-                        <InputGroupText>
-                        <Input type="text" 
-                            name="todo" 
-                            id="todo" 
-                            placeholder='Your next todo'
-                            value={todostring}
-                            onChange={e=>setTodostring(e.target.value)}/> 
-                            <Button color='success'>
-                        Add 
-                        </Button>
-                            </InputGroupText> 
-                    </InputGroup>
-                        
-                </FormGroup>
-            </Form>
-        </div>
-    )
-}
+    const todo = {
+      todoString,
+      id: v4()
+    };
 
-export default Todoform
+    addTodos(todo);
+
+    setTodoString("");
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <FormGroup>
+        <InputGroup>
+          <Input
+            type="text"
+            name="todo"
+            id="todo"
+            placeholder="Enter a todo string"
+            value={todoString}
+            onChange={e => setTodoString(e.target.value)}
+          />
+          
+            <Button color="success">Add Todo</Button>
+          
+        </InputGroup>
+      </FormGroup>
+    </Form>
+  );
+};
+
+export default TodoForm;
