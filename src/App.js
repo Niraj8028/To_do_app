@@ -8,16 +8,18 @@ import TodoReducer from './Context/Reducer'
 import { Container } from 'reactstrap';
 import Todoform from './Components/Todoform';
 import Todos from './Components/Todos';
-const App=()=>{
-  const [todos, dispatch]= useReducer(TodoReducer,[]);
-  return(
-    <TodoContext.Provider value={{todos,dispatch}}>
-        <Container fluid>
-        <h1>TO DO app with context API</h1>
-        <Todos className="mt-5 mb-3"/>
-          <Todoform/>      
-        </Container>
+
+const App = () => {
+  const [todos, dispatch] = useReducer(TodoReducer, []);
+  return (
+    <TodoContext.Provider value={{ todos, dispatch }}>
+      <Container fluid>
+        <h1>Todo App with Context API</h1>
+        <Todos />
+        <Todoform />
+      </Container>
     </TodoContext.Provider>
-  )
-}
+  );
+};
+
 export default App;

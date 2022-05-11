@@ -10,9 +10,9 @@ const Todos=()=>{
   return (
         <ListGroup className='mt-5 mb-3 items'>
             {todos.map(todo=>(
-                <ListGroupItem key={todo.id}>
+                <ListGroupItem key={todo.id} className='d-flex justify-content-center' >
                     {todo.todostring}
-                    <span className="Float-right"
+                    <span className=""
                     onClick={() =>{
                         dispatch({
                             type:REMOVE_TODO,
