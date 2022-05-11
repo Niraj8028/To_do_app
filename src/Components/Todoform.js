@@ -1,13 +1,12 @@
 import React from 'react'
-import { TodoContext } from '../Context/TodoContext'
-import { ADD_TODO } from '../Context/Action.Type'
+
 import { Form, FormGroup, Input, Button, InputGroup,InputGroupText} from "reactstrap"
-import { useContext ,useState} from 'react'
+
 import {v4} from "uuid";
 
 const Todoform=({addTodos})=> {
     const[todostring,setTodostring]=useState("");
-    const {dispatch}=useContext(TodoContext);
+    
 
     const handleSubmit=(e)=>{
         e.preventDefault();
