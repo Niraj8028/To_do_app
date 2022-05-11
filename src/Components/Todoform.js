@@ -5,7 +5,7 @@ import { Form, FormGroup, Input, Button, InputGroup,InputGroupText} from "reacts
 import { useContext ,useState} from 'react'
 import {v4} from "uuid";
 
-const Todoform=()=> {
+const Todoform=({addTodos})=> {
     const[todostring,setTodostring]=useState("");
     const {dispatch}=useContext(TodoContext);
 
@@ -18,10 +18,7 @@ const Todoform=()=> {
             todostring,
             id: v4()
         }
-        dispatch({
-            type:ADD_TODO,
-            payload:todo
-        })
+        addTodos(todo);
         setTodostring("");
     }
     return (
